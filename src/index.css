@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-headline: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * {
+    @apply border-purple-900/30;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: radial-gradient(ellipse at center, #0d0d14 0%, #000000 100%);
+    color: #f2f2f2;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #080810; }
+  ::-webkit-scrollbar-thumb { background: rgba(107,33,168,0.5); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(107,33,168,0.7); }
+
+  /* Animations */
+  @keyframes portal-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(107,33,168,0.4), 0 0 40px rgba(107,33,168,0.2), inset 0 0 20px rgba(107,33,168,0.1); }
+    50% { box-shadow: 0 0 40px rgba(107,33,168,0.6), 0 0 80px rgba(184,134,11,0.3), inset 0 0 40px rgba(107,33,168,0.2); }
+  }
+
+  @keyframes rift-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(212,160,23,0.4), 0 0 40px rgba(212,160,23,0.2); }
+    50% { box-shadow: 0 0 30px rgba(212,160,23,0.6), 0 0 60px rgba(212,160,23,0.3); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes chromatic-shift {
+    0%, 100% { text-shadow: -1px 0 rgba(107,33,168,0.8), 1px 0 rgba(184,134,11,0.8); }
+    50% { text-shadow: -2px 0 rgba(107,33,168,0.8), 2px 0 rgba(184,134,11,0.8); }
+  }
+
+  @keyframes warp-in {
+    0% { transform: scale(0.95) translateY(20px); opacity: 0; filter: blur(10px); }
+    100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0); }
+  }
+
+  @keyframes scan-line {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  @keyframes particle-rise {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+  }
+
+  .font-headline { font-family: var(--font-headline); }
+  .font-body { font-family: var(--font-body); }
+  .font-mono { font-family: var(--font-mono); }
+
+  .animate-portal-pulse { animation: portal-pulse 3s ease-in-out infinite; }
+  .animate-rift-glow { animation: rift-glow 2s ease-in-out infinite; }
+  .animate-float { animation: float 4s ease-in-out infinite; }
+  .animate-warp-in { animation: warp-in 0.6s ease-out forwards; }
+  .animate-chromatic { animation: chromatic-shift 3s ease-in-out infinite; }
+
+  .text-gradient-cosmic {
+    background: linear-gradient(135deg, #7c3aed 0%, #d4a017 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-portal {
+    background: radial-gradient(ellipse at center, rgba(107,33,168,0.6) 0%, transparent 70%);
+  }
+
+  .glow-rift { box-shadow: 0 0 40px rgba(212,160,23,0.4); }
+
+  .containment-card {
+    @apply relative overflow-hidden rounded-lg border border-purple-900/30;
+    background: linear-gradient(145deg, rgba(107,33,168,0.08) 0%, rgba(0,0,0,0.8) 100%);
+  }
+  .containment-card::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(90deg, transparent 0%, rgba(107,33,168,0.05) 50%, transparent 100%);
+    animation: scan-line 4s linear infinite;
+  }
+}
