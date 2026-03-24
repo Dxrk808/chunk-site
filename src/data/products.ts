@@ -13,6 +13,7 @@ export interface FlavorData {
     density: string;
   };
   available: boolean;
+  alwaysAvailable: boolean;
 }
 
 export interface DropData {
@@ -25,8 +26,30 @@ export interface DropData {
   loreEntry?: string;
 }
 
+// ── The OG ───────────────────────────────────────
+export const ogChunk: FlavorData = {
+  id: 'og-chunk',
+  name: 'The OG CHUNK',
+  codename: 'OG-000',
+  description:
+    'The original. The one that started it all. Pure chocolate density — no gimmicks, no experiments. Just the densest, gooiest, most perfectly rich brownie ever created. Always available. Always perfect.',
+  lore:
+    'Before the experiments, before the anomalies, there was the source. The first thing Chunk ever baked on Theobrova — a perfect, dense square of chocolate matter. No additives. No mutations. Just pure, unwavering chocolate density. It was the proof of concept that everything else would be built on. The OG never changes. It never needs to.',
+  price: 12,
+  classification: 'STABLE',
+  origin: 'Sector 0 — Origin Point',
+  specs: {
+    dimensions: '3" × 3" × 2"',
+    weight: '~6 oz',
+    density: 'EXTREME',
+  },
+  available: true,
+  alwaysAvailable: true,
+};
+
 // ── Current Flavors ──────────────────────────────
 export const flavors: FlavorData[] = [
+  ogChunk,
   {
     id: 'pb-anomaly',
     name: 'Peanut Butter Anomaly',
@@ -44,6 +67,7 @@ export const flavors: FlavorData[] = [
       density: 'EXTREME',
     },
     available: true,
+    alwaysAvailable: false,
   },
   {
     id: 'brookie-fusion',
@@ -62,6 +86,7 @@ export const flavors: FlavorData[] = [
       density: 'CRITICAL',
     },
     available: true,
+    alwaysAvailable: false,
   },
   {
     id: 'fruity-rift',
@@ -80,6 +105,7 @@ export const flavors: FlavorData[] = [
       density: 'HIGH',
     },
     available: true,
+    alwaysAvailable: false,
   },
 ];
 
@@ -128,7 +154,7 @@ export const drops: DropData[] = [
     id: 'drop-001',
     name: 'First Contact',
     date: 'TBD',
-    flavors: flavors,
+    flavors: flavors.filter((f) => !f.alwaysAvailable),
     status: 'incoming',
     loreEntry:
       'The first specimens to emerge from Chunk\'s lab on Theobrova. After months of calibrating the alien equipment, three stable anomalies materialized. The rift is open.',

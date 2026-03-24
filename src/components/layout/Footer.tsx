@@ -61,9 +61,10 @@ export function Footer() {
             <h4 className="font-mono text-xs tracking-[0.2em] text-secondary uppercase mb-4">Transmit</h4>
             <ul className="space-y-2">
               <li>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="https://instagram.com/chunk.la" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Instagram
                 </a>
+                <span className="font-mono text-xs text-muted-foreground/50 block mt-0.5">chunk.la</span>
               </li>
               <li>
                 <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary transition-colors">
@@ -77,7 +78,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-mono text-xs text-muted-foreground/50">
-            © 2024 CHUNK Labs — Theobrova Research Division
+            © 2025 CHUNK Labs — Theobrova Research Division
           </p>
           <p className="font-mono text-xs text-muted-foreground/50">
             All specimens are made with love. And science.
